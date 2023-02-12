@@ -7,7 +7,7 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
     def __init__(self):
-        super().__init__(self.email, self.password, self.first_name, self.last_name)
+        super().__init__(email=self.email, password=self.password, first_name=self.first_name, last_name=self.last_name)
         storage.new(self)
 
 
