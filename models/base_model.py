@@ -4,6 +4,9 @@ from datetime import datetime
 from models import storage
 
 class BaseModel():
+    id = ""
+    created_at = ""
+    updated_at = ""
     date_time_format = "%Y-%m-%dT%H:%M:%S.%f"
     def __init__(self, *args, **kwargs): 
        if (len(kwargs) != 0):
