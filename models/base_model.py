@@ -4,20 +4,27 @@ from datetime import datetime
 from models import storage
 
 class BaseModel():
-    id = ""
-    created_at = ""
-    updated_at = ""
+    print("Entring base model class to assign public attr")
+    id = uuid4()
+    print("id --> {}".format(id))
+    created_at = datetime.now()
+    print("Assigned datetime --> {}".format(created_at))
+    updated_at = datetime.now()
     date_time_format = "%Y-%m-%dT%H:%M:%S.%f"
+    print("Exiting assignment --- Entring init")
     def __init__(self, *args, **kwargs): 
-       if (len(kwargs) != 0):
+        if (len(kwargs) != 0):
+            print("Key words args found")
             for key, value in kwargs.items():
+                print("Key: {} Value {}".format(key, value))
                 if key != "__class__":
                     if key == "created_at":
                         datetime.strptime(value, self.date_time_format)
                     if key == "updated_at":
                         datetime.strptime(value, self.date_time_format)
                     setattr(self, key, value)
-       else:
+        else:
+           print("Entring Else statement")
            self.id = uuid4()        
            self.created_at = datetime.now()
            self.updated_at = datetime.now()
