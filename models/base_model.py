@@ -4,14 +4,7 @@ from datetime import datetime
 from models import storage
 
 class BaseModel():
-    print("Entring base model class to assign public attr")
-    id = uuid4()
-    print("id --> {}".format(id))
-    created_at = datetime.now()
-    print("Assigned datetime --> {}".format(created_at))
-    updated_at = datetime.now()
     date_time_format = "%Y-%m-%dT%H:%M:%S.%f"
-    print("Exiting assignment --- Entring init")
     def __init__(self, *args, **kwargs): 
         if (len(kwargs) != 0):
             print("Key words args found")
@@ -49,10 +42,10 @@ class BaseModel():
         value = self.__class__.__name__
         final_dict[key] = value
         for key, value in self.__dict__.items():
-            if key == "created_at":
+            if key == "created_at" or key == "updated_at":
                 final_dict[key] = value.isoformat()
-            if key == "updated_at":
-                final_dict[key] = value.isoformat()
-            if key == "id":
+            elif key == "id":
                 final_dict[key] = str(value)
+            else:
+                final_dict[key] = value
         return(final_dict)
