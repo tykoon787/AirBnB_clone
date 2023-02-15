@@ -2,10 +2,24 @@
 import json
 import os
 
+"""
+This module contains the file Storage Logic
+
+Claseses:
+    FileStorage
+
+Functions:
+    all (self)
+    new (self)
+    save (self)
+    reload
+"""
+
+
 class FileStorage():
     """
-    File Storage Class 
-    .... 
+    File Storage Class
+    ....
     Attributes
     ----------
     file_path: String
@@ -18,7 +32,7 @@ class FileStorage():
     """
     __file_path = "file.json"
     __objects = {}
-    
+
     def all(self):
         """
         Function that returns the dictonary objects
@@ -42,26 +56,25 @@ class FileStorage():
             print("Save key{} save value{}".format(key, obj))
             serialize_dict[key] = obj.to_dict()
         with open(self.__file_path, mode="w", encoding="utf-8") as f:
-            json.dump(serialize_dict, f, indent = 4)
+            json.dump(serialize_dict, f, indent=4)
 
-    def reload(self): 
+    def reload(self):
         """
         Deserialzes the JSON file to __objects (dictionary)
         """
         try:
             if os.path.exists(self.__file_path):
                 with open(self.__file_path, mode="r", encoding="utf-8") as f:
-                        read_file = f.read()
-                        self.__objects = json.loads(read_file)
-                        for key, val in self.__objects.items():
-                            class_name = val["__class__"]
-                            module_name = "BaseModel"
-                            class_ = getattr(module_name, class_name)
-                            # cls = globals()[class_name]
-                            obj = class_(**val)
-                            self.all()[key] = obj
+                    read_file = f.read()
+                    self.__objects = json.loads(read_file)
+                    for key, val in self.__objects.items():
+                        class_name = val["__class__"]
+                        module_name = "BaseModel"
+                        class_ = getattr(module_name, class_name)
+                        # cls = globals()[class_name]
+                        obj = class_(**val)
+                        self.all()[key] = obj
             else:
-               pass 
+                pass
         except FileNotFoundError as e:
             pass
-
