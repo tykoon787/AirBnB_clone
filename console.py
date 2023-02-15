@@ -1,9 +1,20 @@
+#!/usr/bin/python3
+
 import cmd
-from models.base_model import BaseModel
 from models import storage
 """
 This module contains the logic for the console
 
+Classes:
+    HBNBCommand
+
+Functions:
+    do_create(self, class_name)
+    do_show(self, arg)
+    do_destroy(self, arg)
+    do_update(self, arg)
+    do_quit(self, line)
+    do_EOF(self, line)
 """
 
 
@@ -12,12 +23,14 @@ class HBNBCommand(cmd.Cmd):
     CLI for AirBnB
     """
     prompt = "(hbnb) "
+
     def do_create(self, class_name):
         """
         Creates a new instance of BaseMOdel, saves it json and prints the id
 
             Parameters:
-                class_name (string) : A class name that will be instantiated to an object
+                class_name (string) : A class name that
+                will be instantiated to an object
         """
         if class_name:
             if class_name in globals():
@@ -32,7 +45,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """
-        Prints the string representation of an object based on the Class Name and ID
+        Prints the string representation of
+        an object based on the Class Name and ID
         """
         if arg:
             args = arg.split()
@@ -50,10 +64,10 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print(" ** Instance id missing ** ")
             except KeyError:
-                print("** Class doesn't exist **") 
+                print("** Class doesn't exist **")
         else:
             print("** Class Name missing ** ")
-         
+
     def do_destroy(self, arg):
         """
         deletes an instance based on name and id
@@ -71,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
                     file_data = storage.all()
                     if name_id in file_data:
                         print("Deleting {}".format(name_id))
-                        del file_data[name_id] 
+                        del file_data[name_id]
                         storage.save()
                     else:
                         print("** no instance found **")
@@ -82,15 +96,17 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Updates an instance based on the class name and ID by adding or updating attribute
+        Updates an instance based on the class
+        name and ID by adding or updating attribute
         The changes are saved to the json file
         """
         if arg:
-            args = arg.split() 
+            args = arg.split()
             if len(args) < 4:
-                print(" ** Usage: do_update <class_name> <id> <attr_name> <attr_value>")
+                print(" ** Usage: do_update < class_name >\
+                      < id > <attr_name > <attr_value >")
                 return
-            
+
             class_name = args[0]
             id = args[1]
             attr_name = args[2]
@@ -116,8 +132,9 @@ class HBNBCommand(cmd.Cmd):
                         print(" ** Key not found ** ")
 
     def emptyline(self):
-            """console to execute nothing when you press enter without an argument"""
-            pass
+        """console to execute nothing when
+        you press enter without an argument"""
+        pass
 
     def do_quit(self, line):
         """
@@ -130,6 +147,3 @@ class HBNBCommand(cmd.Cmd):
         Handles EOF, or Exits
         """
         return True
-
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
