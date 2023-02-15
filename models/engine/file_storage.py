@@ -2,7 +2,6 @@
 import json
 import os
 
-
 class FileStorage():
     """
     File Storage Class 
@@ -19,7 +18,7 @@ class FileStorage():
     """
     __file_path = "file.json"
     __objects = {}
-       
+    
     def all(self):
         """
         Function that returns the dictonary objects
@@ -32,14 +31,18 @@ class FileStorage():
         with <obj class name>.id
         """
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj.to_dict()
+        self.__objects[key] = obj
 
     def save(self):
         """
         Function that serializes the obj dict to a json file
         """
+        serialize_dict = {}
+        for key, obj in self.__objects.items():
+            print("Save key{} save value{}".format(key, obj))
+            serialize_dict[key] = obj.to_dict()
         with open(self.__file_path, mode="w", encoding="utf-8") as f:
-            json.dump(self.__objects, f)
+            json.dump(serialize_dict, f, indent = 4)
 
     def reload(self): 
         """
@@ -49,8 +52,14 @@ class FileStorage():
             if os.path.exists(self.__file_path):
                 with open(self.__file_path, mode="r", encoding="utf-8") as f:
                         read_file = f.read()
-                        list_of_instances = json.loads(read_file)
-                        self.__objects = list_of_instances                            
+                        self.__objects = json.loads(read_file)
+                        for key, val in self.__objects.items():
+                            class_name = val["__class__"]
+                            module_name = "BaseModel"
+                            class_ = getattr(module_name, class_name)
+                            # cls = globals()[class_name]
+                            obj = class_(**val)
+                            self.all()[key] = obj
             else:
                pass 
         except FileNotFoundError as e:
