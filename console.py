@@ -147,3 +147,7 @@ class HBNBCommand(cmd.Cmd):
         Handles EOF, or Exits
         """
         return True
+
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
