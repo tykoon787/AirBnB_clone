@@ -69,9 +69,9 @@ class FileStorage():
                     self.__objects = json.loads(read_file)
                     for key, val in self.__objects.items():
                         class_name = val["__class__"]
-                        module_name = "BaseModel"
-                        class_ = getattr(module_name, class_name)
-                        # cls = globals()[class_name]
+                        # module_name = "BaseModel"
+                        # class_ = getattr(module_name, class_name)
+                        class_ = globals()[class_name]
                         obj = class_(**val)
                         self.all()[key] = obj
             else:
