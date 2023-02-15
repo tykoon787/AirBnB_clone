@@ -1,51 +1,51 @@
 #!/usr/bin/python3
 from uuid import uuid4
 from datetime import datetime
-from models import storage
+import models
+"""
+Module containing the Base Class
+"""
 
-class BaseModel():
-    date_time_format = "%Y-%m-%dT%H:%M:%S.%f"
-    def __init__(self, *args, **kwargs): 
-        if (len(kwargs) != 0):
-            print("Key words args found")
+
+class BaseModel:
+    """
+    Parent class that defines all common attributes and
+    methods for other classes
+    """
+    def __init__(self, *args, **kwargs):
+        """Initialises all instances with id and date attributes"""
+        if kwargs:
             for key, value in kwargs.items():
-                print("Key: {} Value {}".format(key, value))
                 if key != "__class__":
-                    if key == "created_at":
-                        datetime.strptime(value, self.date_time_format)
-                    if key == "updated_at":
-                        datetime.strptime(value, self.date_time_format)
                     setattr(self, key, value)
+            _format = "%Y-%m-%dT%H:%M:%S.%f"
+            self.created_at = datetime.strptime(self.created_at, _format)
+            self.updated_at = datetime.strptime(self.updated_at, _format)
         else:
-           print("Entring Else statement")
-           self.id = uuid4()        
-           self.created_at = datetime.now()
-           self.updated_at = datetime.now()
-           storage.new(self)
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
-        return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        """Prints out specified attributes of an instance"""
+        classname = type(self).__name__
+        iid = self.id
+        i_dic = self.__dict__
+        return "[{}] ({}) {}".format(classname, iid, i_dic)
 
     def save(self):
-        """
-        Function taht updates the public instance attribute `updated at` with the current date and time
-        """
-        storage.save()
+        """updates the `updated_at` attribute with current datetime"""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
-        """
-        Function that returns a dict rep of an instance
-        """
-        final_dict = {}
-        key = "__class__"
-        value = self.__class__.__name__
-        final_dict[key] = value
+        """returns a dictionary with all key/values of __dict__"""
+        new_dict = {}
         for key, value in self.__dict__.items():
             if key == "created_at" or key == "updated_at":
-                final_dict[key] = value.isoformat()
-            elif key == "id":
-                final_dict[key] = str(value)
+                new_dict[key] = value.isoformat()
             else:
-                final_dict[key] = value
-        return(final_dict)
+                new_dict[key] = value
+        new_dict["__class__"] = type(self).__name__
+        return new_dict
