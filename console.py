@@ -1,6 +1,11 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+"""
+This module contains the logic for the console
+
+"""
+
 
 class HBNBCommand(cmd.Cmd):
     """
