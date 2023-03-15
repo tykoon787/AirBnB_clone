@@ -1,72 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-	    <title>AirBnB Clone</title>
-	    <link rel="stylesheet" href="styles/4-common.css">
-	    <link rel="stylesheet" href="styles/3-header.css">
-	    <link rel="stylesheet" href="styles/3-footer.css">
-	    <link rel="stylesheet" href="styles/6-filters.css">
-	    <link rel="stylesheet" href="styles/7-places.css">
-	    <link rel="icon" href="images/icon.png" type="image/png">
-	</head>
-	<body>
-	    <header>
-		<div class="logo"></div>
-	    </header>
-	    <div class="container">
-		 <section class="filters">
-			 <button type="button">Search</button>
-			 <div class="locations">
-				 <h3>States</h3>
-				 <h4>New York, Florida...</h4>
-				 <ul class="popover">
-					 <li><h2>Florida:</h2></li>
-					 <li>
-					     <ul class="popover_list">
-						     <li>Page</li>
-						     <li>Page2</li>
-					     </ul>
-					 </li>
-					 <li><h2>New York:</h2></li>
-					 <li>
-						 <ul class="popover_list">
-							 <li>San Francisco</li>
-							 <li>Los Angels</li>
-						 </ul>
-					 </li>
-				 </ul>
-			 </div>
-			 <div class="amenities">
-				 <h3>Amenities</h3>
-				 <h4>Internet, Kitchen...</h4>
-				 <ul class="popover">
-					 <li>Internet</li>
-					 <li>TV</li>
-					 <li>Kitchen</li>
-					 <li>Iron</li>
-				</ul>
-			 </div>
-		 </section>
-		 <section class="Places">
-			 <div class="places_title">
-				 <h1>Places</h1>
-			 </div>
-			 <div class="articles">
-				 <article>
-					 <h2>My Home</h2>
-				 </article>
-				 <article>
-					 <h2>Tiny House</h2>
-				 </article>
-				 <article>
-					 <h2>A suite</h2>
-				 </article>
-			 </div>
+    <head>
+        <title>Header and Footer</title>
+        <link rel="stylesheet" type="text/css" href="styles/3-header.css">
+        <link rel="stylesheet" type="text/css" href="styles/3-footer.css">
+        <link rel="stylesheet" type="text/css" href="styles/4-common.css">
+        <link rel="stylesheet" type="text/css" href="styles/6-filters.css">
+        <link rel="stylesheet" tpye="text/css" href="styles/7-places.css">
+        <link rel="icon" type="image/x-icon" href="images/airbnb_icon.png">
+    </head>
+    <body>
+        <header>
+        </header>
 
-		 </section>
-	    </div>
-	    <footer>
-		    Best School
-	    </footer>
-	</body>
+        <div class="container">
+           <section class="filters"> 
+
+                <div class="location">
+                    <h3>States</h3>
+                    <h4>Choose State:</h4>
+
+                    <ul class="popover">
+                        <h2>Kenya:</h2>
+                            <li>Nairobi</li>
+                            <li>Mombasa</li>
+
+                        <h2>Uganda:</h2>
+                            <li>Kampala</li>
+                            <li>Not Nairobi</li>
+                    </ul>
+                </div>
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <h4>Bed, Coffee</h4>
+
+                    <ul class="popover">
+                        <li>Bed</li>
+                        <li>TV</li>
+                        <li>Dstv</li>
+                        <li>Breakfast</li>
+                    </ul>
+                </div>
+                <button>Search</button>
+            </section> 
+
+            <section class="places">
+                <div><h1>Places</h1></div>
+
+                <div class="artear
+                cles">
+                    <article><h2>My Home</h2></article>
+                    <article><h2>Tiny House</h2></article>
+                    <article><h2>A suite</h2></article>
+                </div>
+            </section>
+
+        </div>
+        <footer><p>Best School</p></footer>
+    </body>
 </html>

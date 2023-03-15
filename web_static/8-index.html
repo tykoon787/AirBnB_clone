@@ -1,203 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+    <head>
+        <title>Header and Footer</title>
+        <link rel="stylesheet" type="text/css" href="styles/3-header.css">
+        <link rel="stylesheet" type="text/css" href="styles/3-footer.css">
+        <link rel="stylesheet" type="text/css" href="styles/4-common.css">
+        <link rel="stylesheet" type="text/css" href="styles/6-filters.css">
+        <link rel="stylesheet" tpye="text/css" href="styles/8-places.css">
+        <link rel="icon" type="image/x-icon" href="images/airbnb_icon.png">
+    </head>
+    <body>
+        <header>
+        </header>
 
-<head>
-     <title>AirBnB Clone</title>
-     <link rel="stylesheet" href="styles/4-common.css">
-     <link rel="stylesheet" href="styles/3-header.css">
-     <link rel="stylesheet" href="styles/3-footer.css">
-     <link rel="stylesheet" href="styles/6-filters.css">
-     <link rel="stylesheet" href="styles/8-places.css">
-     <link rel="icon" href="images/icon.png" type="image/png">
-</head>
+        <div class="container">
+           <section class="filters"> 
 
-<body>
-     <header>
-	     <div class="logo"></div>
-     </header>
-     <div class="container">
-	    <section class="filters">
-		    <button type="button">Search</button>
-		    <div class="locations">
-			    <h3>States</h3>
-			    <h4>Michigan, Atlanta...</h4>
-			    <ul class="popover">
-				    <li>
-					<h2>Atlanta:</h2>
-				    </li>
-				    <li>
-					<ul class="popover_list">
-						<li>Page</li>
-						<li>Page2</li>
-					</ul>
-				    </li>
-				    <li>
-					 <h2>Michigan:</h2>
-				    </li>
-				    <li>
-					 <ul class="popover_list">
-						<li>San Francisco</li>
-						<li>Los Angels</li>
-					 </ul>
-				    </li>
-			    </ul>
-		    </div>
-		    <div class="amenities">
-			    <h3>Amenities</h3>
-			    <h4>Internet, Kitchen...</h4>
-			    <ul class="popover">
-				    <li>Internet</li>
-				    <li>TV</li>
-				    <li>Kitchen</li>
-				    <li>Iron</li>
-			    </ul>
-		    </div>
-	    </section>
-	    <section class="places">
-		<div class="places_title">
-			<h1>Places</h1>
-		</div>
-		<div class="articles">
-			<article>
-			    <div class="price_title">
-				    <div class="article_title">
-					    <h2>My Home</h2>
-				    </div>
-				    <div class="price_by_night">
-					    <div class="price">
-						    $80
-					    </div>
-				    </div>
-			    </div>
-			    <div class="information">
-				    <div class="max_guest">
-					    <div class="guest_icon">
-					    </div>
-					    <div class="guest_number">
-						    <h2>2 Guests</h2>
-					    </div>
-				    </div>
-				    <div class="number_rooms">
-					    <div class="rooms_icon">
-					    </div>
-					    <div class="rooms_number">
-						    <h2>1 Bedroom</h2>
-					    </div>
-				    </div>
-				    <div class="number_bathrooms">
-					    <div class="bathrooms_icon">
-					    </div>
-					    <div class="bathrooms_number">
-						    <h2>1 Bathroom</h2>
-					    </div>
-				    </div>
-			    </div>
-			    <div class="user">
-				<b>Owner:</b> Don Toliver
-			    </div>
-			    <div class="description">
-				    This is an amazing 1 bedroom and 1 bathroom luxurius apartment that
-				    can accomodate two people. It is located in the Central Business
-				    District, in a quite zone with restricted access to public means
-				    of transport. It is situated just oopposite the Gucci Store.
-			    </div>
-			</article>
-			<article>
-				<div class="price_title">
-					<div class="article_title">
-						<h2>Tiny House</h2>
-					</div>
-					<div class="price_by_night">
-						<div class="price">
-							$80
-						</div>
-					</div>
-				</div>
-				<div class="information">
-					<div class="max_guest">
-						<div class="guest_icon">
-						</div>
-						<div class="guest_number">
-							<h2>4 Guests</h2>
-						</div>
-					</div>
-					<div class="number_rooms">
-						<div class="rooms_icon">
-						</div>
-						<div class="rooms_number">
-							<h2>2 Bedrooms</h2>
-						</div>
-					</div>
-					<div class="number_bathrooms">
-						<div class="bathrooms_icon">
-						</div>
-						<div class="bathrooms_number">
-							<h2>1 Bathroom</h2>
-						</div>
-					</div>
-				</div>
-				<div class="user">
-					<b>Owner:</b> Carti
-				</div>
-				<div class="description">
-					This space is private and is a
-					penthouse located on the twentieth 
-					floor of Shujaa Nest Apartments. The 
-					This is an mazing 2 bedroom 1 bedroom
-					apartment. It is located in the 
-					Central Business District in an area 
-					with restricted public access with top
-					level security and serenity.
+                <div class="location">
+                    <h3>States</h3>
+                    <h4>Choose State:</h4>
 
-				</div>
-			</article>
-			<article>
-				<div class="price_title">
-					<div class="article_title">
-						<h2>A Suite</h2>
-					</div>
-					<div class="price_by_night">
-						<div class="price">
-							$200
-						</div>
-					</div>
-				</div>
-				<div class="information">
-					<div class="max_guest">
-						<div class="guest_icon">
-						</div>
-						<div class="guest_number">
-							<h2>2 Guests</h2>
-						</div>
-					</div>
-					<div class="number_rooms">
-						<div class="rooms_icon">
-						</div>
-						<div class="rooms_number">
-							<h2>1 Bedroom</h2>
-						</div>
-					</div>
-					<div class="number_bathrooms">
-						<div class="bathrooms_icon">
-						</div>
-						<div class="bathrooms_number">
-							<h2>1 Bathroom</h2>
-						</div>
-					</div>
-				</div>
-				<div class="user">
-					<b>Owner:</b> Durkio
-				</div>
-				<div class="description">
-					Come experience world level luxury.
-				</div>
-			</article>
-		</div>
-	    </section>
-     </div>
-     <footer>
-	     Best School
-     </footer>
-</body>
+                    <ul class="popover">
+                        <h2>Kenya:</h2>
+                            <li>Nairobi</li>
+                            <li>Mombasa</li>
 
+                        <h2>Uganda:</h2>
+                            <li>Kampala</li>
+                            <li>Not Nairobi</li>
+                    </ul>
+                </div>
+                <div class="amenities">
+                    <h3>Amenities</h3>
+                    <h4>Bed, Coffee</h4>
+
+                    <ul class="popover">
+                        <li>Bed</li>
+                        <li>TV</li>
+                        <li>Dstv</li>
+                        <li>Breakfast</li>
+                    </ul>
+                </div>
+                <button>Search</button>
+            </section> 
+
+            <section class="places">
+                <div><h1>Places</h1></div>
+                
+                <div class="articles">
+                    <article><h2>My Home</h2>
+                        <div class="price_by_night">
+                            <p>$80</p>
+                        </div>
+                        <div class="information">
+                            <div class="max_guest">
+                                <p>Guests</p>
+                            </div>
+
+                            <div class="number_rooms">
+                                <p>Number of Rooms</p>
+                            </div>
+
+                            <div class="number_bathrooms">
+                                <p>Bathrooms</p>
+
+                            </div>
+                        </div>
+
+                        <div class="user">
+                            <p><b>Owner:</b> Panda</p>
+                        </div>
+
+                        <div class="description">
+                            <p>
+                            Pandas are native to China and their natural habitat 
+                            is the bamboo forests in the mountainous regions of central 
+                            and southwestern China. These forests are known for their 
+                            cool and wet climate, which is essential for the survival 
+                            of pandas.
+                            </p>
+                        </div>
+                    </article>
+                    <article><h2>Tiny House</h2>
+                        <div class="price_by_night">
+                            <p>$65</p>
+                        </div>
+                        <div class="information">
+                            <div class="max_guest">
+                                <p>Guests</p>
+                            </div>
+
+                            <div class="number_rooms">
+                                <p>Number of Rooms</p>
+                            </div>
+
+                            <div class="number_bathrooms">
+                                <p>Bathrooms</p>
+
+                            </div>
+                        </div>
+
+                        <div class="user">
+                            <p><b>Owner:</b> Panda</p>
+                        </div>
+
+                        <div class="description">
+                            <p>
+                            Pandas are native to China and their natural habitat 
+                            is the bamboo forests in the mountainous regions of central 
+                            and southwestern China. These forests are known for their 
+                            cool and wet climate, which is essential for the survival 
+                            of pandas.
+                            </p>
+                        </div>
+                    </article>
+                    <article><h2>Suite</h2>
+                        <div class="price_by_night">
+                            <p>$50</p>
+                        </div>
+                        <div class="information">
+                            <div class="max_guest">
+                                <p>Guests</p>
+                            </div>
+
+                            <div class="number_rooms">
+                                <p>Number of Rooms</p>
+                            </div>
+
+                            <div class="number_bathrooms">
+                                <p>Bathrooms</p>
+
+                            </div>
+                        </div>
+
+                        <div class="user">
+                            <p><b>Owner:</b> Panda</p>
+                        </div>
+
+                        <div class="description">
+                            <p>
+                            Pandas are native to China and their natural habitat 
+                            is the bamboo forests in the mountainous regions of central 
+                            and southwestern China. These forests are known for their 
+                            cool and wet climate, which is essential for the survival 
+                            of pandas.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+        <footer><p>Best School</p></footer>
+    </body>
 </html>
