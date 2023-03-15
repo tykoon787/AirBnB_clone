@@ -8,9 +8,9 @@ body {
 
 .container {
     max-width: 1000px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 0 auto;
     display: flex;
+    padding: 30px;
     align-items: center;
     justify-content: center;
 }
