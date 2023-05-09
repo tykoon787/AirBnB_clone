@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import cmd
 from models.base_model import BaseModel
 from models import storage
@@ -33,17 +34,20 @@ class HBNBCommand(cmd.Cmd):
             args = arg.split()
             try:
                 cls = globals()[args[0]]
-                if args[1]:
-                    name_id = args[0] + "." + args[1]
-                    storage.reload()
-                    file_data = storage.all()
-                    for key, value in file_data.items():
-                        if key == name_id:
-                            print(value)
-                            return
-                    print(" ** No Instance found **")
-                else:
-                    print(" ** Instance id missing ** ")
+                try:
+                    if args[1]:
+                        name_id = args[0] + "." + args[1]
+                        # storage.reload()
+                        file_data = storage.all()
+                        for key, value in file_data.items():
+                            if key == name_id:
+                                print(value)
+                                return
+                        print(" ** No Instance found **")
+                    else:
+                        print(" ** Instance id missing ** ")
+                except IndexError:
+                    print("** Instance id missing **")
             except KeyError:
                 print("** Class doesn't exist **") 
         else:
@@ -58,18 +62,19 @@ class HBNBCommand(cmd.Cmd):
             args = arg.split()
             try:  # check if class name exits
                 cls = globals()[args[0]]
-                if len(args) == 1:
-                    print("** instance id missing **")
-                else:
-                    name_id = args[0] + "." + args[1]
-                    storage.reload()
-                    file_data = storage.all()
-                    if name_id in file_data:
-                        print("Deleting {}".format(name_id))
-                        del file_data[name_id] 
-                        storage.save()
-                    else:
-                        print("** no instance found **")
+                try:
+                    if args[1]:
+                        name_id = args[0] + "." + args[1]
+                        # storage.reload()
+                        file_data = storage.all()
+                        if name_id in file_data:
+                            print("Deleting {}".format(name_id))
+                            del file_data[name_id] 
+                            storage.save()
+                        else:
+                            print("** no instance found **")
+                except IndexError:
+                    print("** Instance id missing **")
             except KeyError:
                 print("** class doesn't exist **")
         else:
@@ -109,6 +114,31 @@ class HBNBCommand(cmd.Cmd):
                         break
                     else:
                         print(" ** Key not found ** ")
+        
+    def do_all(self, arg):
+        """_summary_
+
+        Args:
+            arg (_type_): _description_
+        """
+        data_list = []
+        if arg:
+           try:
+                class_name = globals()[arg] 
+                print("Class_name ==> {}".format(class_name))
+                file_data = storage.all()
+                for key, value in file_data.items():
+                    if type(value) == class_name:
+                        # Append list
+                        data_list.append(value.__str__())
+           except KeyError:
+                print(" ** class doesn not exist **")
+        else:
+            file_data = storage.all()
+            for key, value in file_data.items():
+                # Append list
+                data_list.append(value.__str__())
+        print(data_list)
 
     def emptyline(self):
             """console to execute nothing when you press enter without an argument"""
