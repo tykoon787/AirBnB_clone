@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import json
 import os
+import models.base_model as bm
 
 class FileStorage():
     """
@@ -18,7 +19,8 @@ class FileStorage():
     """
     __file_path = "file.json"
     __objects = {}
-    
+    class_dict = {"BaseModel": bm.BaseModel}
+   
     def all(self):
         """
         Function that returns the dictonary objects
@@ -38,10 +40,14 @@ class FileStorage():
         Function that serializes the obj dict to a json file
         """
         serialize_dict = {}
+        print("Self.__objects dictionary: {}".format(self.__objects))
         for key, obj in self.__objects.items():
-            print("Save key{} save value{}".format(key, obj))
-            serialize_dict[key] = obj.to_dict()
-        with open(self.__file_path, mode="w", encoding="utf-8") as f:
+            print("Save key ===> {} save value ===> {} of type ===> {}".format(key, obj, type(obj)))
+            if isinstance(obj, bm.BaseModel):
+                serialize_dict[key] = obj.to_dict()
+            else:
+                pass
+        with open(self.__file_path, mode='w', encoding="utf-8") as f:
             json.dump(serialize_dict, f, indent = 4)
 
     def reload(self): 
@@ -53,13 +59,9 @@ class FileStorage():
                 with open(self.__file_path, mode="r", encoding="utf-8") as f:
                         read_file = f.read()
                         self.__objects = json.loads(read_file)
-                        for key, val in self.__objects.items():
-                            class_name = val["__class__"]
-                            module_name = "BaseModel"
-                            class_ = getattr(module_name, class_name)
-                            # cls = globals()[class_name]
-                            obj = class_(**val)
-                            self.all()[key] = obj
+                        print("Dictionary after reloading {}".format(self.__objects))
+                        for key, value in self.__objects.items():
+                            self.__objects[key] = self.class_dict[value["__class__"]](**value)
             else:
                pass 
         except FileNotFoundError as e:
