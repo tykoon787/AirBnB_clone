@@ -4,18 +4,24 @@ from datetime import datetime
 from models import storage
 
 class BaseModel():
-    date_time_format = "%Y-%m-%dT%H:%M:%S.%f"
     def __init__(self, *args, **kwargs): 
+        date_time_format = "%Y-%m-%dT%H:%M:%S.%f"
         if (len(kwargs) != 0):
             print("Key words args found")
             for key, value in kwargs.items():
                 print("Key: {} Value {}".format(key, value))
                 if key != "__class__":
                     if key == "created_at":
-                        datetime.strptime(value, self.date_time_format)
-                    if key == "updated_at":
-                        datetime.strptime(value, self.date_time_format)
-                    setattr(self, key, value)
+                        print("Created at found")
+                        datetime_obj = datetime.strptime(value, date_time_format)
+                        print("Setting time attribute: {}".format(type(datetime_obj)))
+                        setattr(self, key, datetime_obj)
+                    elif key == "updated_at":
+                        datetime_obj = datetime.strptime(value, date_time_format)
+                        setattr(self, key, datetime_obj)
+                    else: 
+                        print("Setting Attribute: key {} value {} of type {}".format(key, value, type(value)))
+                        setattr(self, key, value)
         else:
            print("Entring Else statement")
            self.id = uuid4()        
@@ -28,10 +34,11 @@ class BaseModel():
 
     def save(self):
         """
-        Function taht updates the public instance attribute `updated at` with the current date and time
+        Function that updates the public instance attribute `updated at` with the current date and time
         """
-        storage.save()
+        # TODO: Check where storage.save() should come
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
