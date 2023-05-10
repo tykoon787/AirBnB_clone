@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import cmd
+import shlex
 from models.base_model import BaseModel
 from models import storage
 
@@ -82,38 +83,57 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """
-        Updates an instance based on the class name and ID by adding or updating attribute
+        Updates an instance based on the class name and ID by adding or updating attributes
         The changes are saved to the json file
         """
+        # Check if class_name is present
         if arg:
-            args = arg.split() 
-            if len(args) < 4:
-                print(" ** Usage: do_update <class_name> <id> <attr_name> <attr_value>")
+            args = shlex.split(arg)
+            # id not present
+            if len(args) == 1:
+                print(" ** instance id missing **")
                 return
-            
-            class_name = args[0]
-            id = args[1]
-            attr_name = args[2]
-            attr_value = args[3]
+            # attr_name not present
+            elif len(args) == 2:
+                print(" ** attribute name missing **")
+                return
+            # attr_value not present
+            elif len(args) == 3:
+                print(" ** attribute value missing **")
+                return
+            else: 
+                class_name = args[0]
+                id = args[1]
+                attr_name = args[2]
+                try:
+                    # Conversion to Int
+                    attr_value = int(args[3])
+                except ValueError:
+                    try:
+                        # Conversion to a float
+                        attr_value = float(args[3])
+                    except ValueError:
+                        # Defaulting to string value
+                        attr_value = args[3]
 
-            if class_name not in globals():
-                print(" ** Class does not exist ** ")
-                return
-            else:
-                name_id = class_name + "." + id
-                storage.reload()
-                # Store reloaded data
-                reloaded_data = storage.all()
-                for key, value in reloaded_data.items():
-                    if key == name_id:
-                        instance_dict = value
-                        # Add the attibute name to the dictionary and its value
-                        instance_dict[attr_name] = attr_value
-                        # Save the file
-                        storage.save()
-                        break
-                    else:
-                        print(" ** Key not found ** ")
+                # print("Type of arg[3] {}".format(type(attr_value)))
+                if class_name not in globals():
+                    print(" ** class doesn't exist ** ")
+                    return
+                else:
+                    name_id = class_name + "." + id            
+                    reloaded_data = storage.all()
+                    for key, value in reloaded_data.items():
+                        if key == name_id:
+                            # Set an attribute to the object
+                            setattr(value, attr_name, attr_value)
+                            # Save
+                            storage.save()
+                            return
+                    print(" ** no instance found ** ")
+        else:
+            print(" ** class name missing ** ")
+            return
         
     def do_all(self, arg):
         """_summary_
