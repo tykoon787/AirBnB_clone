@@ -1,6 +1,11 @@
-from models.base_model import BaseModel
+#!/usr/bin/python3
+"""
+This module defines a user class
 
-class User(BaseModel):
+"""
+import models.base_model as bm
+
+class User(bm.BaseModel):
     """
     This is the user class
     ...
@@ -20,4 +25,3 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
     
-
