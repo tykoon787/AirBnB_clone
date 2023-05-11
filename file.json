@@ -1,29 +1,44 @@
 {
-    "BaseModel.f0d22f3a-57b9-489d-9992-2c1619d0adb3": {
+    "Amenity.8ebeb851-0797-4bb6-91fb-2329a05bfd15": {
+        "__class__": "Amenity",
+        "id": "8ebeb851-0797-4bb6-91fb-2329a05bfd15",
+        "created_at": "2023-05-11T15:03:09.286352",
+        "updated_at": "2023-05-11T15:03:09.286429"
+    },
+    "City.571fe5ae-450d-4459-b82c-5776e71dc0d5": {
+        "__class__": "City",
+        "id": "571fe5ae-450d-4459-b82c-5776e71dc0d5",
+        "created_at": "2023-05-11T15:03:19.740856",
+        "updated_at": "2023-05-11T15:03:19.740908"
+    },
+    "Review.ac0fc7a6-7bef-41e4-93b9-5c505ba1e40a": {
+        "__class__": "Review",
+        "id": "ac0fc7a6-7bef-41e4-93b9-5c505ba1e40a",
+        "created_at": "2023-05-11T15:03:25.451542",
+        "updated_at": "2023-05-11T15:03:25.451599"
+    },
+    "Place.5965863d-a952-4d49-9d0d-1b81d6ae2c60": {
+        "__class__": "Place",
+        "id": "5965863d-a952-4d49-9d0d-1b81d6ae2c60",
+        "created_at": "2023-05-11T15:03:28.427065",
+        "updated_at": "2023-05-11T15:03:28.427129"
+    },
+    "BaseModel.c04597e8-01f2-480b-b1a5-66d6a0b65074": {
         "__class__": "BaseModel",
-        "id": "f0d22f3a-57b9-489d-9992-2c1619d0adb3",
-        "created_at": "2023-02-13T17:02:05.097708",
-        "updated_at": "2023-02-13T17:02:05.098329",
-        "name": "My_First_Model",
-        "my_number": 89
+        "id": "c04597e8-01f2-480b-b1a5-66d6a0b65074",
+        "created_at": "2023-05-11T15:03:31.050091",
+        "updated_at": "2023-05-11T15:03:31.050149"
     },
-    "User.11df46c1-fa58-4e56-9905-99ef84c7c0d7": {
+    "User.b401f7aa-1a58-4376-ba94-cbc745b916d4": {
         "__class__": "User",
-        "id": "11df46c1-fa58-4e56-9905-99ef84c7c0d7",
-        "created_at": "2023-02-13T17:02:05.098509",
-        "updated_at": "2023-02-13T17:02:05.099165",
-        "first_name": "Betty",
-        "last_name": "Bar",
-        "email": "airbnb@mail.com",
-        "password": "root"
+        "id": "b401f7aa-1a58-4376-ba94-cbc745b916d4",
+        "created_at": "2023-05-11T15:03:32.686860",
+        "updated_at": "2023-05-11T15:03:32.686920"
     },
-    "User.94dd4208-f093-498d-999d-40f635e6355b": {
-        "__class__": "User",
-        "id": "94dd4208-f093-498d-999d-40f635e6355b",
-        "created_at": "2023-02-13T17:02:05.099409",
-        "updated_at": "2023-02-13T17:02:05.099420",
-        "first_name": "John",
-        "email": "panda@mail.com",
-        "password": "bamboo"
+    "Review.67260cc7-2eac-4ad5-94fd-47eb52527f8f": {
+        "__class__": "Review",
+        "id": "67260cc7-2eac-4ad5-94fd-47eb52527f8f",
+        "created_at": "2023-05-11T15:03:47.620183",
+        "updated_at": "2023-05-11T15:03:47.620244"
     }
 }

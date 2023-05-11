@@ -2,10 +2,10 @@
 """
 This module defines an `Amenity` class
 """
-import models.base_model as bm
+from models.base_model import BaseModel
 
 
-class Amenity(bm.BaseModel):
+class Amenity(BaseModel):
     """
     class representaion of an amenity
     """

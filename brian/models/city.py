@@ -3,10 +3,10 @@
 This module defines a `City` class
 that inherits from a superclass `BaseModel`
 """
-import models.base_model as bm
+from models.base_model import BaseModel
 
 
-class City(bm.BaseModel):
+class City(BaseModel):
     """
     class representation of a city
     """

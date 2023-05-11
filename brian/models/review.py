@@ -3,10 +3,10 @@
 This module defines a `Review` class that
 inherits from a superclass `BaseModel`
 """
-import models.base_model as bm 
+from models.base_model import BaseModel
 
 
-class Review(bm.BaseModel):
+class Review(BaseModel):
     """
     class representation of a Review
     """

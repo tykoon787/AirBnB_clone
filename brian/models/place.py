@@ -2,10 +2,10 @@
 """
 This module define a `Place` class
 """
-import models.base_model as bm
+from models.base_model import BaseModel
 
 
-class Place(bm.BaseModel):
+class Place(BaseModel):
     """
     class representing a Place
     """

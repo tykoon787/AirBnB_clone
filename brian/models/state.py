@@ -3,10 +3,10 @@
 This module defines a `State` class that
 inherites from a superclass `BaseClass`
 """
-import models.base_model as bm
+from models.base_model import BaseModel
 
 
-class State(bm.BaseModel):
+class State(BaseModel):
     """
     represents a geographical state
     """

@@ -3,6 +3,11 @@ import json
 import os
 import models.base_model as bm
 import models.user as user
+import models.amenity as amenity
+import models.city as city
+import models.place as place
+import models.review as review
+import models.state as state
 
 class FileStorage():
     """
@@ -21,7 +26,12 @@ class FileStorage():
     __file_path = "file.json"
     __objects = {}
     class_dict = {"BaseModel": bm.BaseModel,
-                  "User": user.User}
+                  "User": user.User,
+                  "State": state.State,
+                  "Amenity": amenity.Amenity,
+                  "Place": place.Place,
+                  "Review": review.Review,
+                  "City": city.City}
    
     def all(self):
         """
