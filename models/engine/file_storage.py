@@ -2,6 +2,7 @@
 import json
 import os
 import models.base_model as bm
+import models.user as user
 
 class FileStorage():
     """
@@ -19,7 +20,8 @@ class FileStorage():
     """
     __file_path = "file.json"
     __objects = {}
-    class_dict = {"BaseModel": bm.BaseModel}
+    class_dict = {"BaseModel": bm.BaseModel,
+                  "User": user.User}
    
     def all(self):
         """
@@ -43,7 +45,7 @@ class FileStorage():
         print("Self.__objects dictionary: {}".format(self.__objects))
         for key, obj in self.__objects.items():
             print("Save key ===> {} save value ===> {} of type ===> {}".format(key, obj, type(obj)))
-            if isinstance(obj, bm.BaseModel):
+            if (isinstance(obj, bm.BaseModel)) or (isinstance(obj, user.User)):
                 serialize_dict[key] = obj.to_dict()
             else:
                 pass
